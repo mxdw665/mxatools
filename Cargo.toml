@@ -1,0 +1,22 @@
+[package]
+name = "at"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.release]
+opt-level = "z"  # 优化输出的二进制文件的大小
+lto = true         # 开启链接时优化（Link Time Optimization）
+codegen-units = 1  # 减少并行代码生成单元数量，以增加优化
+panic = "abort"    # 在 panic 时立即终止程序，减少额外的展开代码
+strip = true       # 自动去除二进制文件中的符号信息
+
+[dependencies]
+colored = "2"
+dirs = "3.0"
+serde_json = "1.0"
+log = "0.4.20"
+flexi_logger = "0.27.4"
+curl = "0.4.4"
+clap = { version = "4.4.18", features = ["derive"] }
